@@ -4,7 +4,14 @@ import type { Report } from "./types";
 import { PROJECT_SLUGS, type ProjectSlug } from "./projects";
 
 export type { ProjectSlug };
-export { PROJECT_SLUGS, PROJECTS, projectMeta, scoreLabel } from "./projects";
+export {
+  PROJECT_SLUGS,
+  PROJECTS,
+  projectMeta,
+  scoreLabel,
+  type ProjectHomeIcon,
+  type ProjectMeta,
+} from "./projects";
 export * from "./types";
 export * from "./helpers";
 
