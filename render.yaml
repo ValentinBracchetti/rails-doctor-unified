@@ -1,0 +1,23 @@
+# Blueprint Render (Infrastructure as Code)
+# https://docs.render.com/infrastructure-as-code
+#
+# Déploiement : Dashboard Render → New → Blueprint → sélectionner ce dépôt.
+# Alternative manuelle : New → Web Service → Runtime Node, mêmes commandes ci-dessous.
+#
+# Ne pas définir NODE_ENV ici : Render le met à production au runtime uniquement.
+# Le fixer au build ferait ignorer les devDependencies par npm et casserait next build.
+#
+# Optionnel (dashboard) : ADMIN_LOGIN, ADMIN_PASSWORD pour remplacer admin/root.
+
+services:
+  - type: web
+    name: rails-doctor-unified
+    runtime: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: NEXT_SERVER_ACTIONS_ENCRYPTION_KEY
+        generateValue: true
